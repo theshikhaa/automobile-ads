@@ -1,0 +1,5 @@
+outs:
+- md5: 68fd5f5b05fe034425c2d635d6ac86b6
+  size: 188405
+  hash: md5
+  path: merged_automobile.csv
