@@ -1,0 +1,20 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Local runtime
+data/prediction_log.json
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

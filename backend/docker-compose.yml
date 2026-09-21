@@ -1,0 +1,10 @@
+services:
+  api:
+    build: .
+    image: automobile-price-api:latest
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: 8000
+    volumes:
+      - ./data:/app/data
