@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException
-
 from schemas.automobile import AutomobileInput
 from services.prediction_service import prediction_service
 

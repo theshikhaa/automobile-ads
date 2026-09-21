@@ -1,14 +1,12 @@
+import json
 from collections import deque
 from datetime import datetime, timezone
 from pathlib import Path
 from threading import Lock
-import json
 
 import joblib
 import numpy as np
 import pandas as pd
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-
 from core.config import (
     MAX_LOG_SIZE,
     MODEL_PATH,
@@ -18,6 +16,8 @@ from core.config import (
     SHAP_BACKGROUND_SIZE,
 )
 from schemas.automobile import AutomobileInput
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
 from services.feature_engineering import add_engineered_features
 
 FEATURE_ORDER = list(AutomobileInput.model_fields.keys())
@@ -263,7 +263,7 @@ class PredictionService:
 
         return {
             "available": True,
-            "n_samples": int(len(y_true)),
+            "n_samples": len(y_true),
             "mae": round(mae, 2),
             "rmse": round(rmse, 2),
             "r2": round(r2, 4),
@@ -297,7 +297,7 @@ class PredictionService:
                 "status": "insufficient_production_data",
                 "message": "Make a few /predict calls first. Drift is measured against the UCI reference distribution.",
                 "n_production": 0,
-                "n_reference": int(len(self.reference_df)),
+                "n_reference": len(self.reference_df),
                 "features": [],
             }
 
@@ -328,8 +328,8 @@ class PredictionService:
         return {
             "status": overall,
             "threshold": PSI_THRESHOLD,
-            "n_production": int(len(log_df)),
-            "n_reference": int(len(self.reference_df)),
+            "n_production": len(log_df),
+            "n_reference": len(self.reference_df),
             "shifted_features": alerts,
             "features": features[:20],
         }
@@ -462,8 +462,8 @@ class PredictionService:
             "status": "healthy",
             "model_loaded": self.model is not None,
             "model_path": str(MODEL_PATH),
-            "reference_rows": int(len(self.reference_df)),
-            "logged_predictions": int(len(self.prediction_log)),
+            "reference_rows": len(self.reference_df),
+            "logged_predictions": len(self.prediction_log),
         }
 
 
