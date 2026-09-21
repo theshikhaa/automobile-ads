@@ -1,8 +1,8 @@
 """Build engineered reference.csv from the UCI Automobile dataset."""
 
-from pathlib import Path
 import sys
 import urllib.request
+from pathlib import Path
 
 import pandas as pd
 
