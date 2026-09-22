@@ -57,3 +57,8 @@ def sample_request():
 @router.get("/health")
 def api_health():
     return prediction_service.health()
+
+@router.get("/heart")
+def api_health():
+    return prediction_service.health()
+
